@@ -2,6 +2,7 @@ import React from 'react';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 
 import GridView from './GridView';
+import type { Section } from './GridView';
 
 const styles = StyleSheet.create({
   container: {
@@ -41,20 +42,9 @@ const createSections = (size = 20) =>
     };
   });
 
-type Item = {|
-  moduleName: string,
-  props: object
-|};
-
-type Section = {|
-  title: string,
-  id: string,
-  items: Array<Item>,
-  totalCount: number
-|};
-
 type State = {
   sections: Array<Sections>
+  loading: Set<string>,
 };
 
 export default class App extends React.Component<{}, State> {

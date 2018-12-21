@@ -1,11 +1,29 @@
 /* @flow */
 
 import * as React from 'react';
-import { requireNativeComponent } from 'react-native';
+import { ViewPropTypes, requireNativeComponent } from 'react-native';
 
 const RNLGridView = requireNativeComponent('RNLGridView');
 
-const GridView = ({ onSectionEndReached, ...props }) => (
+export type Item = {|
+  moduleName: string,
+  props: mixed
+|};
+
+export type Section = {|
+  title: string,
+  id: string,
+  items: Array<Item>,
+  totalCount: number
+|};
+
+type Props = {
+  onSectionEndReached: (sectionId: string) => void,
+  sections: Array<Section>,
+  style: ViewPropTypes.style
+};
+
+const GridView = ({ onSectionEndReached, ...props }: Props) => (
   <RNLGridView
     {...props}
     onSectionEndReached={({ nativeEvent }) => {
