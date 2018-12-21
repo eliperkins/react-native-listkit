@@ -7,6 +7,8 @@ final class ColumnViewModel: NSObject, ListDiffable {
   let adapter: ListAdapter
   let totalCount: Int
 
+  weak var loadingDelegate: GridViewSectionLoadingDelegate?
+
   init(viewController: UIViewController, identifier: String, title: String, totalCount: Int, items: [ReactViewModel]) {
     self.title = title
     self.items = items
@@ -22,7 +24,8 @@ final class ColumnViewModel: NSObject, ListDiffable {
     super.init()
 
     // This also feels... odd...
-    self.adapter.dataSource = self
+    adapter.dataSource = self
+    adapter.scrollViewDelegate = self
   }
 
   func diffIdentifier() -> NSObjectProtocol {
@@ -30,7 +33,10 @@ final class ColumnViewModel: NSObject, ListDiffable {
   }
 
   func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
-    return true
+    guard let object = object as? ColumnViewModel else { return false }
+    return title == object.title &&
+      totalCount == object.totalCount &&
+      items == object.items
   }
 }
 
@@ -46,5 +52,19 @@ extension ColumnViewModel: ListAdapterDataSource {
 
   func emptyView(for listAdapter: ListAdapter) -> UIView? {
     return nil
+  }
+}
+
+extension ColumnViewModel: UIScrollViewDelegate {
+  func scrollViewWillEndDragging(
+    _ scrollView: UIScrollView,
+    withVelocity velocity: CGPoint,
+    targetContentOffset: UnsafeMutablePointer<CGPoint>
+  ) {
+    guard let delegate = loadingDelegate else { return }
+    let distance = scrollView.contentSize.height - (targetContentOffset.pointee.y + scrollView.bounds.height)
+    if distance < 200 {
+      delegate.gridViewWillReachEndOfSection(with: identifier)
+    }
   }
 }

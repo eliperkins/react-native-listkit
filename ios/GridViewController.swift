@@ -22,6 +22,8 @@ final class GridViewController: UIViewController {
     }
   }
 
+  weak var loadingDelegate: GridViewSectionLoadingDelegate?
+
   // MARK: IGListKit
 
   fileprivate lazy var adapter: ListAdapter = {
@@ -87,7 +89,7 @@ extension GridViewController: ListAdapterDataSource {
   func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
     return [
       GridViewModel(columns: sections.map { section in
-        ColumnViewModel(
+        let viewModel = ColumnViewModel(
           viewController: self,
           identifier: section.identifier,
           title: section.title,
@@ -96,6 +98,8 @@ extension GridViewController: ListAdapterDataSource {
             ReactViewModel(bridge: bridge, module: $0.moduleName, props: $0.props, width: 330 )
           })
         )
+        viewModel.loadingDelegate = loadingDelegate
+        return viewModel
     })]
   }
 

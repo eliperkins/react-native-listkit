@@ -24,12 +24,10 @@ const NumberCell = ({ number } = { number: 1 }) => (
 const moduleName = 'NumberCell';
 AppRegistry.registerComponent(moduleName, () => NumberCell);
 
-type Props = {};
-
-const createItems = (size = 200) =>
+const createItems = (size = 20, startingAt = 0) =>
   Array.from(Array(size)).map((_, number) => ({
     moduleName,
-    props: { number }
+    props: { number: number + startingAt }
   }));
 
 const createSections = (size = 20) =>
@@ -43,9 +41,61 @@ const createSections = (size = 20) =>
     };
   });
 
-export default class App extends React.Component<Props> {
+type Item = {|
+  moduleName: string,
+  props: object
+|};
+
+type Section = {|
+  title: string,
+  id: string,
+  items: Array<Item>,
+  totalCount: number
+|};
+
+type State = {
+  sections: Array<Sections>
+};
+
+export default class App extends React.Component<{}, State> {
+  state = {
+    sections: createSections(20),
+    loading: new Set([])
+  };
+
+  loadMore = (sectionId: string) => {
+    setTimeout(() => {
+      const sectionIndex = parseInt(sectionId);
+      const { items: oldItems } = this.state.sections[sectionIndex];
+      const newSections = [...this.state.sections];
+      const sectionToUpdate = newSections[sectionIndex];
+      const newSection = {
+        ...sectionToUpdate,
+        items: createItems(oldItems.length + 20)
+      };
+      newSections[sectionIndex] = newSection;
+      this.state.loading.delete(sectionId);
+      this.setState({
+        sections: newSections,
+        loading: new Set(this.state.loading)
+      });
+    }, 3000);
+  };
+
+  onSectionEndReached = (sectionId: string) => {
+    if (!this.state.loading.has(sectionId)) {
+      this.setState({ loading: new Set(this.state.loading.add(sectionId)) });
+      this.loadMore(sectionId);
+    }
+  };
+
   render() {
-    const sections = createSections(20);
-    return <GridView style={{ flex: 1 }} sections={sections} />;
+    return (
+      <GridView
+        style={{ flex: 1 }}
+        sections={this.state.sections}
+        onSectionEndReached={this.onSectionEndReached}
+      />
+    );
   }
 }

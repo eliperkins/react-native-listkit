@@ -18,6 +18,16 @@ final class ReactViewModel: ListDiffable {
   }
 
   func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
-    return true
+    guard let object = object as? ReactViewModel else { return false }
+    return self == object
+  }
+}
+
+extension ReactViewModel: Equatable {
+  static func == (lhs: ReactViewModel, rhs: ReactViewModel) -> Bool {
+    return lhs.module == rhs.module &&
+      lhs.props == rhs.props &&
+      lhs.bridge == rhs.bridge &&
+      lhs.width == rhs.width
   }
 }

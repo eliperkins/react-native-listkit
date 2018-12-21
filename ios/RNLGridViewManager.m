@@ -11,6 +11,7 @@ RCT_EXPORT_MODULE()
 RCT_CUSTOM_VIEW_PROPERTY(sections, NSArray<NSDictionary>, RNLGridView) {
   view.sections = [RCTConvert NSArray:json];
 }
+RCT_EXPORT_VIEW_PROPERTY(onSectionEndReached, RCTDirectEventBlock);
 
 - (UIView *)view {
   return [[RNLGridView alloc] initWithBridge:self.bridge];

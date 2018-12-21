@@ -51,6 +51,7 @@
 		2D64EA0F21CC50DD00D22C52 /* ColumnSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D64EA0E21CC50DD00D22C52 /* ColumnSectionController.swift */; };
 		2D64EA1321CD537600D22C52 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D64EA1221CD537600D22C52 /* Section.swift */; };
 		2D64EA1521CD53A500D22C52 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D64EA1421CD53A500D22C52 /* Item.swift */; };
+		2D64EA1821CD809A00D22C52 /* GridViewSectionLoadingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D64EA1721CD809A00D22C52 /* GridViewSectionLoadingDelegate.swift */; };
 		2DCD954D1E0B4F2C00145EB5 /* RNListKitKanbanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RNListKitKanbanTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -373,6 +374,7 @@
 		2D64EA0E21CC50DD00D22C52 /* ColumnSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnSectionController.swift; sourceTree = "<group>"; };
 		2D64EA1221CD537600D22C52 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		2D64EA1421CD53A500D22C52 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		2D64EA1721CD809A00D22C52 /* GridViewSectionLoadingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewSectionLoadingDelegate.swift; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -568,6 +570,7 @@
 				2D64E9B121CC2D3C00D22C52 /* GridView.swift */,
 				2D64E9CC21CC3AC400D22C52 /* GridViewController.swift */,
 				2D64E9CE21CC3BDA00D22C52 /* GridViewSnappingLayout.swift */,
+				2D64EA1721CD809A00D22C52 /* GridViewSectionLoadingDelegate.swift */,
 				2D64EA1621CD801700D22C52 /* Models */,
 				2D64E9FF21CC488B00D22C52 /* Cells */,
 				2D64EA0B21CC4D9400D22C52 /* Misc Utils */,
@@ -1243,6 +1246,7 @@
 				2D64E9FC21CC464D00D22C52 /* GridSectionController.swift in Sources */,
 				2D64E9CD21CC3AC400D22C52 /* GridViewController.swift in Sources */,
 				2D64EA0D21CC4DA900D22C52 /* ReactViewModel.swift in Sources */,
+				2D64EA1821CD809A00D22C52 /* GridViewSectionLoadingDelegate.swift in Sources */,
 				2D64E9CF21CC3BDA00D22C52 /* GridViewSnappingLayout.swift in Sources */,
 				2D64E9B221CC2D3C00D22C52 /* GridView.swift in Sources */,
 				2D64EA0921CC4D3E00D22C52 /* ColumnViewModel.swift in Sources */,

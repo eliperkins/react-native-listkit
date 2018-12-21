@@ -13,6 +13,8 @@ final class GridView: UIView {
     }
   }
 
+  @objc var onSectionEndReached: RCTDirectEventBlock?
+
   // MARK: - Properties
 
   let bridge: RCTBridge
@@ -25,6 +27,7 @@ final class GridView: UIView {
     self.viewController = GridViewController(bridge: bridge)
     super.init(frame: .zero)
     addSubview(viewController.view)
+    viewController.loadingDelegate = self
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -43,5 +46,15 @@ final class GridView: UIView {
   override func layoutSubviews() {
     super.layoutSubviews()
     viewController.view.frame = bounds
+  }
+}
+
+extension GridView: GridViewSectionLoadingDelegate {
+  func gridViewWillReachEndOfSection(with identifier: String) {
+    if let onSectionEndReached = onSectionEndReached {
+      onSectionEndReached([
+        "sectionId": identifier
+      ])
+    }
   }
 }
