@@ -2,6 +2,8 @@
 
 :warning: Work in progress... :warning:
 
+![A glorious gif of nested UICollectionViews with React Native-powered cells scrolling at 60fps](https://github.com/eliperkins/react-native-listkit/raw/master/docs/listkit.gif)
+
 ## Getting Started
 
 - `yarn install`
