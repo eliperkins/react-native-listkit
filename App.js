@@ -16,21 +16,26 @@ const styles = StyleSheet.create({
   }
 });
 
+// Demo component that we'll load in each collection view cell
 const NumberCell = ({ number } = { number: 1 }) => (
   <View style={styles.container}>
     <Text style={styles.text}>{number}</Text>
   </View>
 );
 
+// Since our UICollectionViewCell will contain a RCTRootView, we've gotta register this
+// component here to instantiate it natively.
 const moduleName = 'NumberCell';
 AppRegistry.registerComponent(moduleName, () => NumberCell);
 
-const createItems = (size = 20, startingAt = 0) =>
+// Creates a set of props for a number of items.
+const createItems = (size = 20) =>
   Array.from(Array(size)).map((_, number) => ({
     moduleName,
-    props: { number: number + startingAt }
+    props: { number }
   }));
 
+// Creates a set of sections, with an array of items inside.
 const createSections = (size = 20) =>
   Array.from(Array(size)).map((_, number) => {
     const items = createItems();
@@ -43,8 +48,11 @@ const createSections = (size = 20) =>
   });
 
 type State = {
-  sections: Array<Sections>
-  loading: Set<string>,
+  // Used to populate the collection view.
+  sections: Array<Sections>,
+
+  // Used to prevent loading the same section multiple times.
+  loading: Set<string>
 };
 
 export default class App extends React.Component<{}, State> {
@@ -54,6 +62,7 @@ export default class App extends React.Component<{}, State> {
   };
 
   loadMore = (sectionId: string) => {
+    // Fakes doing a network request and replacing the necessary state.
     setTimeout(() => {
       const sectionIndex = parseInt(sectionId);
       const { items: oldItems } = this.state.sections[sectionIndex];
