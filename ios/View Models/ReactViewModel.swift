@@ -14,7 +14,7 @@ final class ReactViewModel: ListDiffable {
   }
 
   func diffIdentifier() -> NSObjectProtocol {
-    return "react" as NSObject
+    return props.hashValue ^ width.hashValue as NSObject
   }
 
   func isEqual(toDiffableObject object: ListDiffable?) -> Bool {

@@ -568,8 +568,7 @@
 				2D64E9B121CC2D3C00D22C52 /* GridView.swift */,
 				2D64E9CC21CC3AC400D22C52 /* GridViewController.swift */,
 				2D64E9CE21CC3BDA00D22C52 /* GridViewSnappingLayout.swift */,
-				2D64EA1421CD53A500D22C52 /* Item.swift */,
-				2D64EA1221CD537600D22C52 /* Section.swift */,
+				2D64EA1621CD801700D22C52 /* Models */,
 				2D64E9FF21CC488B00D22C52 /* Cells */,
 				2D64EA0B21CC4D9400D22C52 /* Misc Utils */,
 				2D64E9FA21CC460500D22C52 /* Section Controllers */,
@@ -613,6 +612,15 @@
 				2D64EA0421CC4CE700D22C52 /* LabelView.swift */,
 			);
 			path = "Misc Utils";
+			sourceTree = "<group>";
+		};
+		2D64EA1621CD801700D22C52 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2D64EA1421CD53A500D22C52 /* Item.swift */,
+				2D64EA1221CD537600D22C52 /* Section.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
