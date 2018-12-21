@@ -2,6 +2,14 @@
 
 :warning: Work in progress... :warning:
 
+## Getting Started
+
+- `yarn install`
+- `cd ios`
+- `carthage bootstrap --platform ios`
+- `open RNListKit.xcodeproj`
+- Build and run
+
 ## 🤔 What is this thing?
 
 This demonstrates how we're using [IGListKit](https://github.com/instagram/IGListKit) in our React Native app at [Clubhouse](https://clubhouse.io).
