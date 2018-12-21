@@ -2,12 +2,16 @@ import IGListKit
 
 final class ColumnViewModel: NSObject, ListDiffable {
   let title: String
+  let identifier: String
   let items: [ReactViewModel]
   let adapter: ListAdapter
+  let totalCount: Int
 
-  init(title: String, items: [ReactViewModel], viewController: UIViewController) {
+  init(viewController: UIViewController, identifier: String, title: String, totalCount: Int, items: [ReactViewModel]) {
     self.title = title
     self.items = items
+    self.identifier = identifier
+    self.totalCount = totalCount
 
     self.adapter = ListAdapter(
       updater: ListAdapterUpdater(),
@@ -22,7 +26,7 @@ final class ColumnViewModel: NSObject, ListDiffable {
   }
 
   func diffIdentifier() -> NSObjectProtocol {
-    return "column" as NSObject
+    return identifier as NSObject
   }
 
   func isEqual(toDiffableObject object: ListDiffable?) -> Bool {

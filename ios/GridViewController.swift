@@ -16,6 +16,11 @@ final class GridViewController: UIViewController {
   // MARK: - Properties
 
   let bridge: RCTBridge
+  var sections: [Section] = [] {
+    didSet {
+      adapter.performUpdates(animated: true, completion: nil)
+    }
+  }
 
   // MARK: IGListKit
 
@@ -81,17 +86,17 @@ final class GridViewController: UIViewController {
 extension GridViewController: ListAdapterDataSource {
   func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
     return [
-      GridViewModel(columns: [
+      GridViewModel(columns: sections.map { section in
         ColumnViewModel(
-          title: "Wat",
-          items: [
-            // TODO: can't get the proper width here. Need it from the section controller 🤔
-            ReactViewModel(bridge: bridge, module: "NumberCell", props: ["number" : 100], width: 330)
-          ],
-          viewController: self
+          viewController: self,
+          identifier: section.identifier,
+          title: section.title,
+          totalCount: section.totalCount,
+          items: section.items.map({
+            ReactViewModel(bridge: bridge, module: $0.moduleName, props: $0.props, width: 330 )
+          })
         )
-      ])
-    ]
+    })]
   }
 
   func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {

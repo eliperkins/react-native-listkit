@@ -79,6 +79,7 @@ extension ColumnCell: ListBindable {
   func bindViewModel(_ viewModel: Any) {
     guard let viewModel = viewModel as? ColumnViewModel else { fatalError() }
     titleLabel.text = viewModel.title
+    countLabel.text = String(viewModel.totalCount)
     viewModel.adapter.collectionView = collectionView
   }
 }

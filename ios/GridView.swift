@@ -9,7 +9,7 @@ final class GridView: UIView {
 
   @objc var sections: Array<JSON> = [] {
     didSet {
-      print(sections)
+      viewController.sections = sections.enumerated().map(Section.init)
     }
   }
 
