@@ -1,5 +1,5 @@
 #import <React/RCTViewManager.h>
-#import "RNListKitKanban-Swift.h"
+#import "RNListKit-Swift.h"
 
 @interface RNLGridViewManager : RCTViewManager
 @end

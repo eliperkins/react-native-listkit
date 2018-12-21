@@ -44,8 +44,8 @@ However, even now, with this demo project done, I'm not entirely sure of the rep
 
 Another hurdle we ran into is understanding when and were to create adapters, and their relationships with view models and even `UIViewController` itself.
 
-- https://github.com/eliperkins/RNListKitKanban/blob/3ff76521352d5acfffdf59b47ff24d05c114ed02/ios/View%20Models/ColumnViewModel.swift#L45
-- https://github.com/eliperkins/RNListKitKanban/blob/3ff76521352d5acfffdf59b47ff24d05c114ed02/ios/View%20Models/ColumnViewModel.swift#L26
+- https://github.com/eliperkins/react-native-listkit/blob/3ff76521352d5acfffdf59b47ff24d05c114ed02/ios/View%20Models/ColumnViewModel.swift#L45
+- https://github.com/eliperkins/react-native-listkit/blob/3ff76521352d5acfffdf59b47ff24d05c114ed02/ios/View%20Models/ColumnViewModel.swift#L26
 
 ## TODO
 
